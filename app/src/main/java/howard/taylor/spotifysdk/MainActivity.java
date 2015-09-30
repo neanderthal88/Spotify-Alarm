@@ -36,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
@@ -43,6 +44,7 @@ import kaaes.spotify.webapi.android.models.Album;
 import kaaes.spotify.webapi.android.models.Pager;
 import kaaes.spotify.webapi.android.models.Playlist;
 import kaaes.spotify.webapi.android.models.PlaylistSimple;
+import kaaes.spotify.webapi.android.models.PlaylistTrack;
 import kaaes.spotify.webapi.android.models.Track;
 import kaaes.spotify.webapi.android.models.UserPrivate;
 import retrofit.Callback;
@@ -64,7 +66,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     ArrayList<String> listOfPlaylists = new ArrayList<>();
     List<PlaylistSimple> playlists = new ArrayList<>();
     private String userID;
-
+    private Pager<PlaylistTrack> songList;
+    private Random rand;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,12 +124,18 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
             }
         }
+        if (requestCode == 1) {
+            int result = intent.getIntExtra("id", -1);
+            new getPlaylistSongs().execute(result);
+
+        }
     }
 
     public void stuffButtonClick(View view) {
         new getUserIDSync().execute();
 
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -225,6 +234,41 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     }
 
 
+    class getPlaylistSongs extends AsyncTask<Integer, Void, Integer> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progDailog = new ProgressDialog(MainActivity.this);
+            progDailog.setMessage("Loading...");
+            progDailog.setIndeterminate(false);
+            progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progDailog.setCancelable(true);
+            progDailog.show();
+
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            String playlistID = playlists.get(params[0]).id;
+            Log.d("param", "" + playlists.get(params[0]).uri);
+            songList = spotify.getPlaylistTracks(userID, playlistID);
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Integer integer){
+
+            ArrayList<PlaylistTrack> songArrayList = new ArrayList<>();
+            for (PlaylistTrack song : songList.items) {
+                songArrayList.add(song);
+            }
+            rand = new Random();
+            String songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
+            Log.d("song", "" + songURI);
+            mPlayer.play(songURI);
+            progDailog.dismiss();
+
+        }
+    }
 
     class getUserIDSync extends AsyncTask<Void, Void, Integer> {
         @Override
@@ -237,11 +281,13 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             progDailog.setCancelable(true);
             progDailog.show();
         }
+
         @Override
         protected Integer doInBackground(Void... params) {
             userID = spotify.getMe().id;
             return 1;
         }
+
         @Override
         protected void onPostExecute(Integer i) {
             new getPlayListSync().execute();
@@ -267,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             b.putStringArrayList("playlist", listOfPlaylists);
             intent.putExtras(b);
             progDailog.dismiss();
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         }
 
 

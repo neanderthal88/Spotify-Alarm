@@ -1,10 +1,13 @@
 package howard.taylor.spotifysdk;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -19,12 +22,24 @@ public class ListOfPlaylists extends AppCompatActivity {
         setContentView(R.layout.activity_list_of_playlists);
 
         listView = (ListView) findViewById(R.id.ListView);
+
         Bundle playlists = getIntent().getExtras();
         ArrayList<String> lists = playlists.getStringArrayList("playlist");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lists);
         listView.setAdapter(arrayAdapter);
         Log.d("Playlist", playlists.get("playlist").toString());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("OnClick", position+"");
+                Intent intent = new Intent();
+                intent.putExtra("id", position);
+                setResult(1, intent);
+                finish();
+            }
+        });
     }
 
     @Override
