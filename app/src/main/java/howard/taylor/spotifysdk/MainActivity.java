@@ -1,6 +1,8 @@
 package howard.taylor.spotifysdk;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -34,6 +36,7 @@ import org.w3c.dom.Text;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private String userID;
     private Pager<PlaylistTrack> songList;
     private Random rand;
+    int playlistID;
+    String songURI;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,27 +111,27 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 Log.e("MainActivity", "TOKEN: " + response.getAccessToken());
                 api.setAccessToken(response.getAccessToken());
                 spotify = api.getService();
-
-                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
-                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
-                    @Override
-                    public void onInitialized(Player player) {
-                        mPlayer.addConnectionStateCallback(MainActivity.this);
-                        mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
-
-                    }
-                });
-
+//                For testing purpose only
+//                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
+//                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
+//                    @Override
+//                    public void onInitialized(Player player) {
+//                        mPlayer.addConnectionStateCallback(MainActivity.this);
+//                        mPlayer.addPlayerNotificationCallback(MainActivity.this);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable throwable) {
+//                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
+//
+//                    }
+//                });
+//
             }
         }
         if (requestCode == 1) {
-            int result = intent.getIntExtra("id", -1);
-            new getPlaylistSongs().execute(result);
+            playlistID = intent.getIntExtra("id", -1);
+            new getPlaylistSongs().execute(playlistID);
 
         }
     }
@@ -233,6 +238,21 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         super.onDestroy();
     }
 
+    public void onCreateAlarm(View view) {
+        //Create an offset from the current time in which the alarm will go off.
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 5);
+
+        //Create a new PendingIntent and add it to the AlarmManager
+        Intent intent = new Intent(this, AlarmActivity.class);
+        intent.putExtra("songURI", songURI);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                12345, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager am =
+                (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                pendingIntent);
+    }
 
     class getPlaylistSongs extends AsyncTask<Integer, Void, Integer> {
         @Override
@@ -244,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progDailog.setCancelable(true);
             progDailog.show();
+            progDailog.dismiss();
 
         }
 
@@ -262,10 +283,9 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 songArrayList.add(song);
             }
             rand = new Random();
-            String songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
+            songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
             Log.d("song", "" + songURI);
-            mPlayer.play(songURI);
-            progDailog.dismiss();
+
 
         }
     }

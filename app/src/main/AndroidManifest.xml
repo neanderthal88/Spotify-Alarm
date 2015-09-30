@@ -25,6 +25,10 @@
             android:name=".ListOfPlaylists"
             android:label="@string/title_activity_list_of_playlists" >
         </activity>
+        <activity
+            android:name=".AlarmActivity"
+            android:label="@string/title_activity_alarm" >
+        </activity>
     </application>
 
 </manifest>
