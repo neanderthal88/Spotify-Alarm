@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     @Override
     protected void onResume() {
         super.onResume();
+        listOfPlaylists.clear();
         _tvTime = (TextView) findViewById(R.id.time);
         _tvTime.setText(_sdfWatchTime.format(new Date()));
     }
@@ -270,9 +271,10 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
         @Override
         protected Integer doInBackground(Integer... params) {
-            String playlistID = playlists.get(params[0]).id;
+            PlaylistSimple playlist = playlists.get(params[0]);
+            String playlistID = playlist.id;
             Log.d("param", "" + playlists.get(params[0]).uri);
-            songList = spotify.getPlaylistTracks(userID, playlistID);
+            songList = spotify.getPlaylistTracks(playlist.owner.id, playlistID);
             return null;
         }
         @Override
@@ -285,7 +287,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             rand = new Random();
             songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
             Log.d("song", "" + songURI);
-
 
         }
     }
