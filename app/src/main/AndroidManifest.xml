@@ -29,11 +29,11 @@
         <activity
             android:name=".AlarmActivity"
             android:label="@string/title_activity_alarm" >
-            <service
-                android:name=".AlarmService"
-                android:enabled="true" />
-            <receiver android:name=".AlarmReceiver" />
         </activity>
+
+        <receiver
+            android:name="howard.taylor.spotifysdk.MyBroadcast"
+            android:enabled="true" />
     </application>
 
 </manifest>

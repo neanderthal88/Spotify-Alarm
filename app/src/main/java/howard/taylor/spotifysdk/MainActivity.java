@@ -243,12 +243,12 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         //Create an offset from the current time in which the alarm will go off.
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.SECOND, 5);
-
+        Log.d("song", "got to onCreateAlarm");
         //Create a new PendingIntent and add it to the AlarmManager
-        Intent intent = new Intent(this, AlarmActivity.class);
+        Intent intent = new Intent(this, MyBroadcast.class);
         intent.putExtra("songURI", songURI);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                12345, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
+                12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am =
                 (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
