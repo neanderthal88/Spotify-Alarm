@@ -28,8 +28,6 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
-import java.io.IOException;
-
 public class AlarmActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
     private static final String CLIENT_ID = new Info().ClientID;
     private static final String REDIRECT_URI = new Info().REDIRECT_URI;

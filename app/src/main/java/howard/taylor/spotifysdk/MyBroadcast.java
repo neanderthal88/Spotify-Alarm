@@ -1,8 +1,6 @@
 package howard.taylor.spotifysdk;
 
 import android.content.*;
-import android.os.PowerManager;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
 /**

@@ -39,5 +39,6 @@ dependencies {
     compile 'kaaes.spotify.webapi.android:spotify-web-api-android-0.1.1@aar'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
+    compile 'com.android.support:design:22.2.0'
 
 }

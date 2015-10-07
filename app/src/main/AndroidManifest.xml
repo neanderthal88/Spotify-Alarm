@@ -21,14 +21,17 @@
         </activity>
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ListOfPlaylists"
-            android:label="@string/title_activity_list_of_playlists" >
+            android:label="@string/title_activity_list_of_playlists"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".AlarmActivity"
-            android:label="@string/title_activity_alarm" >
+            android:label="@string/title_activity_alarm"
+            android:screenOrientation="portrait">
         </activity>
 
         <receiver

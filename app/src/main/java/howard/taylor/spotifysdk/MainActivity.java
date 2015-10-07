@@ -8,7 +8,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -59,26 +58,34 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private static final int REQUEST_CODE = 0;
     private Player mPlayer;
     BroadcastReceiver _broadcastReceiver;
-    private final SimpleDateFormat _sdfWatchTime = new SimpleDateFormat("hh:mm a");
+    private final SimpleDateFormat _sdfWatchTime = new SimpleDateFormat("h:mm a");
     private TextView _tvTime;
     private SpotifyApi api;
     private SpotifyService spotify;
-    private Context context;
     private ProgressDialog progDailog;
 
     ArrayList<String> listOfPlaylists = new ArrayList<>();
     List<PlaylistSimple> playlists = new ArrayList<>();
     private String userID;
     private Pager<PlaylistTrack> songList;
-    private Random rand;
-    int playlistID;
+    int playlistID = 0;
     String songURI;
+    ArrayList<PlaylistTrack> songArrayList;
+    ArrayList<String> stringSongArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Calendar cal = Calendar.getInstance();
 
-        context = getApplicationContext();
+        setContentView(R.layout.activity_main);
+        TextView date = (TextView) findViewById(R.id.date);
+        String month = this.getApplicationContext().getResources().getStringArray(R.array.month_names)[cal.get(Calendar.MONTH)];
+        String day_of_week = this.getApplicationContext().getResources().getStringArray(R.array.day_names)[cal.get(Calendar.DAY_OF_WEEK) - 1];
+        Integer day_of_month = cal.get(Calendar.DAY_OF_MONTH);
+        date.setText(day_of_week + ", " + month + " " + day_of_month.toString());
+
+
         _tvTime = (TextView) findViewById(R.id.time);
         _tvTime.setText(_sdfWatchTime.format(new Date()));
 
@@ -131,14 +138,16 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             }
         }
         if (requestCode == 1) {
-            playlistID = intent.getIntExtra("id", -1);
+            if (intent != null) {
+                playlistID = intent.getIntExtra("id", -1);
+            }
             new getPlaylistSongs().execute(playlistID);
 
         }
     }
 
-    public void stuffButtonClick(View view) {
-        new getUserIDSync().execute();
+    public void getPlaylistButtonClick(View view) {
+        new getUserIDSync(this.getApplicationContext()).execute();
 
     }
 
@@ -181,6 +190,11 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.add_playlist) {
+            Log.d("song", "got to the id check");
+            new getUserIDSync(this.getApplicationContext()).execute();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -239,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         super.onDestroy();
     }
 
+
     public void onCreateAlarm(View view) {
         //Create an offset from the current time in which the alarm will go off.
         Calendar cal = Calendar.getInstance();
@@ -250,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
                 12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am =
-                (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
+                (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                 pendingIntent);
     }
@@ -277,14 +292,16 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             songList = spotify.getPlaylistTracks(playlist.owner.id, playlistID);
             return null;
         }
-        @Override
-        protected void onPostExecute(Integer integer){
 
-            ArrayList<PlaylistTrack> songArrayList = new ArrayList<>();
+        @Override
+        protected void onPostExecute(Integer integer) {
+
+            songArrayList = new ArrayList<>();
             for (PlaylistTrack song : songList.items) {
                 songArrayList.add(song);
+                //stringSongArrayList.add(song.track.uri);
             }
-            rand = new Random();
+            Random rand = new Random();
             songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
             Log.d("song", "" + songURI);
 
@@ -292,9 +309,17 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     }
 
     class getUserIDSync extends AsyncTask<Void, Void, Integer> {
+
+        private Context context;
+
+        public getUserIDSync(Context context) {
+            this.context = context;
+        }
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            Log.d("song", "got to onPreExecute");
             progDailog = new ProgressDialog(MainActivity.this);
             progDailog.setMessage("Loading...");
             progDailog.setIndeterminate(false);
@@ -311,12 +336,17 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
         @Override
         protected void onPostExecute(Integer i) {
-            new getPlayListSync().execute();
+            new getPlayListSync(context).execute();
         }
 
     }
 
     class getPlayListSync extends AsyncTask<Void, Void, Integer> {
+        private Context context;
+
+        public getPlayListSync(Context context) {
+            this.context = context;
+        }
 
         @Override
         protected Integer doInBackground(Void... params) {
