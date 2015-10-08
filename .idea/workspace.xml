@@ -6,36 +6,15 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="alarm" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18e65422-f5c0-4c1f-bc47-b462f90dfbf9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_alarm.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_alarm.xml" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\appcompat_v7_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\gson_2_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\okhttp_2_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\okio_1_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\retrofit_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\spotify_auth_1_0_0_beta10.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\spotify_player_1_0_0_beta10.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\spotify_web_api_android_0_1_1_.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\support_annotations_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\taylo_000\AndroidStudioProjects\SpotifySDK\.idea\libraries\support_v4_23_0_1.xml" afterPath="" />
+    <list default="true" id="18e65422-f5c0-4c1f-bc47-b462f90dfbf9" name="Default" comment="Set repeating alarm at specified time.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/ListOfPlaylists.java" afterPath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/ListOfPlaylists.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java" afterPath="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_list_of_playlists.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_list_of_playlists.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpotifySDK.iws" />
@@ -65,31 +44,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5952381">
-              <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
+            <state vertical-scroll-proportion="-13.4827585">
+              <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
               <folding>
-                <element signature="e#6147#6434#0" expanded="true" />
-                <element signature="e#6433#6434#0" expanded="true" />
-                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#11305#11306#0" expanded="true" />
-                <element signature="e#11351#11352#0" expanded="true" />
-                <element signature="e#12031#12032#0" expanded="true" />
-                <element signature="e#12093#12094#0" expanded="true" />
-                <element signature="e#12252#12253#0" expanded="true" />
-                <element signature="e#12298#12299#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#6346#6673#0" expanded="true" />
+                <element signature="e#6672#6673#0" expanded="true" />
+                <element signature="e#6771#7058#0" expanded="true" />
+                <element signature="e#7057#7058#0" expanded="true" />
+                <element signature="e#8215#8216#0" expanded="true" />
+                <element signature="e#8270#8271#0" expanded="true" />
+                <element signature="e#8317#8318#0" expanded="true" />
+                <element signature="e#8373#8374#0" expanded="true" />
+                <element signature="e#8437#8438#0" expanded="true" />
+                <element signature="e#8490#8491#0" expanded="true" />
+                <element signature="e#8542#8543#0" expanded="true" />
+                <element signature="e#8607#8608#0" expanded="true" />
+                <element signature="e#13417#13418#0" expanded="true" />
+                <element signature="e#13463#13464#0" expanded="true" />
+                <element signature="e#14093#14094#0" expanded="true" />
+                <element signature="e#14155#14156#0" expanded="true" />
+                <element signature="e#14314#14315#0" expanded="true" />
+                <element signature="e#14360#14361#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyBroadcast.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyBroadcast.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.23652174">
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,70 +86,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu_list_of_playlists.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml">
+      <file leaf-file-name="AlarmActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.3448277">
+              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
               <folding>
-                <element signature="e#292#317#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_alarm.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_alarm.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#290#315#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0370371">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_alarm.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_alarm.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7586207">
-              <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="e#1103#1145#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#onConnectionMessage#0;class#AlarmActivity#0" expanded="false" />
+                <element signature="method#onPlaybackEvent#0;class#AlarmActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -168,12 +102,12 @@
       </file>
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.275862">
+              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -1826,9 +1760,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/BroadcastReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/WakeLock.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyWakeLock.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/ListOfPlaylistsSingleton.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/roundedbutton.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -1836,11 +1768,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_list_of_playlists.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_alarm.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_alarm.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java" />
       </list>
     </option>
   </component>
@@ -2488,7 +2422,13 @@
       <option name="project" value="LOCAL" />
       <updated>1444108533700</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UI changes">
+      <created>1444260806172</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1444260806172</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2505,13 +2445,13 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
@@ -2551,7 +2491,9 @@
     <MESSAGE value="Added ability to play random song from chosen playlist timing down from 5 seconds." />
     <MESSAGE value="Fixed problem with playing playlists that you didn't own." />
     <MESSAGE value="Added waking of phone after the 5 seconds.  TODO: Add user input on alarm." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added waking of phone after the 5 seconds.  TODO: Add user input on alarm." />
+    <MESSAGE value="UI changes" />
+    <MESSAGE value="Set repeating alarm at specified time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Set repeating alarm at specified time." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2573,15 +2515,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2651,15 +2603,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2710,15 +2672,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2769,15 +2741,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2828,15 +2810,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2861,15 +2853,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2894,15 +2896,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2912,15 +2924,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2945,18 +2967,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onConnectionMessage#0;class#AlarmActivity#0" expanded="false" />
-            <element signature="method#onPlaybackEvent#0;class#AlarmActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3008,35 +3018,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#292#317#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_alarm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3055,30 +3036,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.1773913">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="e#261#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_list_of_playlists.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23652174">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#292#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/AlarmActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3448277">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#onConnectionMessage#0;class#AlarmActivity#0" expanded="false" />
+            <element signature="method#onPlaybackEvent#0;class#AlarmActivity#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.275862">
+          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5952381">
-          <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
+        <state vertical-scroll-proportion="-13.4827585">
+          <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
           <folding>
-            <element signature="e#6147#6434#0" expanded="true" />
-            <element signature="e#6433#6434#0" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="true" />
-            <element signature="e#11351#11352#0" expanded="true" />
-            <element signature="e#12031#12032#0" expanded="true" />
-            <element signature="e#12093#12094#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6346#6673#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6771#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#8215#8216#0" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8373#8374#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8490#8491#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#13417#13418#0" expanded="true" />
+            <element signature="e#13463#13464#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14314#14315#0" expanded="true" />
+            <element signature="e#14360#14361#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/howard/taylor/spotifysdk/MyBroadcast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23652174">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

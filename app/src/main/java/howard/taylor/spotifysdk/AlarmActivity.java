@@ -28,6 +28,9 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class AlarmActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
     private static final String CLIENT_ID = new Info().ClientID;
     private static final String REDIRECT_URI = new Info().REDIRECT_URI;
@@ -43,7 +46,11 @@ public class AlarmActivity extends AppCompatActivity implements ConnectionStateC
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON |
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_alarm);
-        songURI = getIntent().getStringExtra("songURI");
+        //songURI = getIntent().getStringExtra("songURI");
+        ArrayList<String> songList  =(ArrayList<String>) getIntent().getSerializableExtra("songList");
+        Random rand = new Random();
+        songURI = songList.get(rand.nextInt(songList.size()));
+        Log.d("song", "" +songURI);
         Button stopAlarm = (Button) findViewById(R.id.stopAlarm);
         stopAlarm.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View arg0, MotionEvent arg1) {
@@ -173,6 +180,15 @@ public class AlarmActivity extends AppCompatActivity implements ConnectionStateC
         Log.d("MainActivity", "Playback error received: " + errorType.name());
         switch (errorType) {
             // Handle error type as necessary
+            case TRACK_UNAVAILABLE:
+                //TODO: ADD FUNCTINALITY IF IT FAILS
+                break;
+            case ERROR_PLAYBACK:
+                //TODO: ADD FUNCTINALITY IF IT FAILS
+                break;
+            case ERROR_UNKNOWN:
+                //TODO: ADD FUNCTINALITY IF IT FAILS
+                break;
             default:
                 break;
         }

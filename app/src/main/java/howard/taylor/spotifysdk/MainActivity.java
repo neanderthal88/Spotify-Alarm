@@ -2,14 +2,15 @@ package howard.taylor.spotifysdk;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,22 +18,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
-import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
-import com.squareup.okhttp.Response;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,20 +39,15 @@ import java.util.Random;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
-import kaaes.spotify.webapi.android.models.Album;
 import kaaes.spotify.webapi.android.models.Pager;
-import kaaes.spotify.webapi.android.models.Playlist;
 import kaaes.spotify.webapi.android.models.PlaylistSimple;
 import kaaes.spotify.webapi.android.models.PlaylistTrack;
-import kaaes.spotify.webapi.android.models.Track;
-import kaaes.spotify.webapi.android.models.UserPrivate;
-import retrofit.Callback;
-import retrofit.RetrofitError;
 
 public class MainActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
     private static final String CLIENT_ID = new Info().ClientID;
     private static final String REDIRECT_URI = new Info().REDIRECT_URI;
     private static final int REQUEST_CODE = 0;
+    TimePicker timePicker;
     private Player mPlayer;
     BroadcastReceiver _broadcastReceiver;
     private final SimpleDateFormat _sdfWatchTime = new SimpleDateFormat("h:mm a");
@@ -63,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private SpotifyApi api;
     private SpotifyService spotify;
     private ProgressDialog progDailog;
+    private int alarmHour, alarmMinute;
+
 
     ArrayList<String> listOfPlaylists = new ArrayList<>();
     List<PlaylistSimple> playlists = new ArrayList<>();
@@ -70,8 +64,9 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private Pager<PlaylistTrack> songList;
     int playlistID = 0;
     String songURI;
-    ArrayList<PlaylistTrack> songArrayList;
-    ArrayList<String> stringSongArrayList;
+    ArrayList<PlaylistTrack> songArrayList = new ArrayList<>();
+    ArrayList<String> stringSongArrayList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +146,34 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
     }
 
+    public void onAlarmCreateClick(View view) {
+        if (stringSongArrayList.isEmpty()) {
+            Toast.makeText(this, "Please select a playlist", Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            showDialog(0);
+            //onCreateAlarm();
+
+        }
+
+
+    }
+    @Override
+    protected Dialog onCreateDialog(int playlistID) {
+        return new TimePickerDialog(this, timePickerListener, alarmHour, alarmMinute, false);
+    }
+
+
+    private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            alarmHour = hourOfDay;
+            alarmMinute = minute;
+            onCreateAlarm();
+            Log.d("alarm", "Hour: " + alarmHour + "Minute: " + alarmMinute);
+        }
+    };
     @Override
     public void onStart() {
         super.onStart();
@@ -192,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             return true;
         }
         if (id == R.id.add_playlist) {
-            Log.d("song", "got to the id check");
             new getUserIDSync(this.getApplicationContext()).execute();
 
         }
@@ -254,20 +276,52 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     }
 
 
-    public void onCreateAlarm(View view) {
+    public boolean testFiveSeconds(View view) {
         //Create an offset from the current time in which the alarm will go off.
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.SECOND, 5);
-        Log.d("song", "got to onCreateAlarm");
+        if (stringSongArrayList.isEmpty() || songArrayList.isEmpty()) {
+            Toast.makeText(this, "Please select a playlist", Toast.LENGTH_LONG).show();
+            return false;
+        }
         //Create a new PendingIntent and add it to the AlarmManager
         Intent intent = new Intent(this, MyBroadcast.class);
-        intent.putExtra("songURI", songURI);
+//        intent.putExtra("songURI", songURI);
+        intent.putExtra("songList", stringSongArrayList);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
                 12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am =
                 (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                 pendingIntent);
+        return true;
+    }
+
+    public boolean onCreateAlarm() {
+        //Create an offset from the current time in which the alarm will go off.
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, alarmHour);
+        cal.set(Calendar.MINUTE, alarmMinute);
+        cal.set(Calendar.SECOND, 0);
+        Calendar curTime = Calendar.getInstance();
+        if (stringSongArrayList.isEmpty() || songArrayList.isEmpty()) {
+            Toast.makeText(this, "Please select a playlist", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        Intent intent = new Intent(this, MyBroadcast.class);
+        intent.putExtra("songList", stringSongArrayList);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
+                12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager am =
+                (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
+//        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+//                pendingIntent);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        Log.d("alarm", "Alarm is set for " + cal.getTime());
+        Log.d("alarm", "Time is set to " + curTime.getTime());
+        Toast.makeText(this, "Alarm is set for" + cal.getTime(), Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     class getPlaylistSongs extends AsyncTask<Integer, Void, Integer> {
@@ -288,7 +342,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         protected Integer doInBackground(Integer... params) {
             PlaylistSimple playlist = playlists.get(params[0]);
             String playlistID = playlist.id;
-            Log.d("param", "" + playlists.get(params[0]).uri);
             songList = spotify.getPlaylistTracks(playlist.owner.id, playlistID);
             return null;
         }
@@ -296,14 +349,15 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         @Override
         protected void onPostExecute(Integer integer) {
 
-            songArrayList = new ArrayList<>();
+            songArrayList.clear();
+            stringSongArrayList.clear();
+
             for (PlaylistTrack song : songList.items) {
                 songArrayList.add(song);
-                //stringSongArrayList.add(song.track.uri);
+                stringSongArrayList.add(song.track.uri);
             }
             Random rand = new Random();
             songURI = songArrayList.get(rand.nextInt(songArrayList.size())).track.uri;
-            Log.d("song", "" + songURI);
 
         }
     }
@@ -319,7 +373,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Log.d("song", "got to onPreExecute");
             progDailog = new ProgressDialog(MainActivity.this);
             progDailog.setMessage("Loading...");
             progDailog.setIndeterminate(false);
@@ -357,7 +410,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         protected void onPostExecute(Integer integer) {
             for (PlaylistSimple list : playlists) {
                 listOfPlaylists.add(list.name);
-                Log.d("Play", list.name);
             }
             Intent intent = new Intent(context, ListOfPlaylists.class);
             Bundle b = new Bundle();

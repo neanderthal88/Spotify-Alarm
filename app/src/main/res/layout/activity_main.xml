@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="in 5 seconds"
         android:id="@+id/button2"
-        android:onClick="onCreateAlarm"
+        android:onClick="testFiveSeconds"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
     <android.support.design.widget.FloatingActionButton
@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/ic_add"
+        android:onClick="onAlarmCreateClick" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,5 +54,6 @@
         android:textColor="#FFFFFF"
         android:layout_below="@+id/time"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
