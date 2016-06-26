@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpotifySDK.iml" filepath="$PROJECT_DIR$/SpotifySDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spotify-Alarm.iml" filepath="$PROJECT_DIR$/Spotify-Alarm.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/spotify-web-api-android-0.1.1/spotify-web-api-android-0.1.1.iml" filepath="$PROJECT_DIR$/spotify-web-api-android-0.1.1/spotify-web-api-android-0.1.1.iml" />
     </modules>

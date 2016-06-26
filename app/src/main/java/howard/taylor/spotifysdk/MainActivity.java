@@ -17,6 +17,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private SpotifyService spotify;
     private ProgressDialog progDailog;
     private int alarmHour, alarmMinute;
+    AlarmDBHelper mydb = new AlarmDBHelper(this);
+    DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 
 
     ArrayList<String> listOfPlaylists = new ArrayList<>();
@@ -71,16 +77,48 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Calendar cal = Calendar.getInstance();
-
         setContentView(R.layout.activity_main);
+        setupTimeList();
+        setupTimeDate();
+        setupSpotify();
+
+    }
+
+    private void setupTimeList() {
+        final ArrayList allAlarmTimes = mydb.getAllAlarms();
+        final ArrayList<Integer> allAlarmIDs = mydb.getAllIDs();
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.listview, allAlarmTimes);
+        ListView dbView = (ListView) findViewById(R.id.dbScrollView);
+        dbView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                Toast.makeText(getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        dbView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                mydb.removeAlarm(allAlarmIDs.get(position));
+                setupTimeList();
+                onCancelAlarm();
+                return true;
+            }
+        });
+        dbView.setAdapter(arrayAdapter);
+    }
+
+    private void setupTimeDate() {
+        Calendar cal = Calendar.getInstance();
         TextView date = (TextView) findViewById(R.id.date);
         String month = this.getApplicationContext().getResources().getStringArray(R.array.month_names)[cal.get(Calendar.MONTH)];
         String day_of_week = this.getApplicationContext().getResources().getStringArray(R.array.day_names)[cal.get(Calendar.DAY_OF_WEEK) - 1];
         Integer day_of_month = cal.get(Calendar.DAY_OF_MONTH);
         date.setText(day_of_week + ", " + month + " " + day_of_month.toString());
+    }
 
-
+    private void setupSpotify() {
         _tvTime = (TextView) findViewById(R.id.time);
         _tvTime.setText(_sdfWatchTime.format(new Date()));
 
@@ -93,8 +131,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
         api = new SpotifyApi();
-
-
     }
 
     @Override
@@ -147,18 +183,20 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     }
 
     public void onAlarmCreateClick(View view) {
-        if (stringSongArrayList.isEmpty()) {
-            Toast.makeText(this, "Please select a playlist", Toast.LENGTH_SHORT).show();
-
-        }
-        else{
-            showDialog(0);
-            //onCreateAlarm();
-
-        }
+        new getUserIDSync(this.getApplicationContext()).execute();
+        Toast.makeText(this, "Please select a playlist", Toast.LENGTH_SHORT).show();
+//        if (stringSongArrayList.isEmpty()) {
+//            new getUserIDSync(this.getApplicationContext()).execute();
+//            Toast.makeText(this, "Please select a playlist", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            showDialog(0);
+//            //onCreateAlarm();
+//        }
 
 
     }
+
     @Override
     protected Dialog onCreateDialog(int playlistID) {
         return new TimePickerDialog(this, timePickerListener, alarmHour, alarmMinute, false);
@@ -174,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             Log.d("alarm", "Hour: " + alarmHour + "Minute: " + alarmMinute);
         }
     };
+
     @Override
     public void onStart() {
         super.onStart();
@@ -216,65 +255,30 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         }
         if (id == R.id.add_playlist) {
             new getUserIDSync(this.getApplicationContext()).execute();
+        }
 
+        if (id == R.id.logout) {
+            mydb.dropTable();
+            logout();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
 
-    @Override
-    public void onLoggedIn() {
-        Log.d("MainActivity", "User logged in");
+    public void logout() {
+        AuthenticationClient.clearCookies(this.getApplicationContext());
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
-
-    @Override
-    public void onLoggedOut() {
-        Log.d("MainActivity", "User logged out");
-    }
-
-    @Override
-    public void onLoginFailed(Throwable error) {
-        Log.d("MainActivity", "Login failed");
-    }
-
-    @Override
-    public void onTemporaryError() {
-        Log.d("MainActivity", "Temporary error occurred");
-    }
-
-    @Override
-    public void onConnectionMessage(String message) {
-        Log.d("MainActivity", "Received connection message: " + message);
-    }
-
-    @Override
-    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
-        Log.d("MainActivity", "Playback event received: " + eventType.name());
-        switch (eventType) {
-            // Handle event type as necessary
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onPlaybackError(ErrorType errorType, String errorDetails) {
-        Log.d("MainActivity", "Playback error received: " + errorType.name());
-        switch (errorType) {
-            // Handle error type as necessary
-            default:
-                break;
-        }
-    }
-
     @Override
     protected void onDestroy() {
         // VERY IMPORTANT! This must always be called or else you will leak resources
         Spotify.destroyPlayer(this);
         super.onDestroy();
     }
-
 
     public boolean testFiveSeconds(View view) {
         //Create an offset from the current time in which the alarm will go off.
@@ -300,10 +304,12 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     public boolean onCreateAlarm() {
         //Create an offset from the current time in which the alarm will go off.
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR, alarmHour);
+        cal.set(Calendar.HOUR_OF_DAY, alarmHour);
         cal.set(Calendar.MINUTE, alarmMinute);
         cal.set(Calendar.SECOND, 0);
-        Calendar curTime = Calendar.getInstance();
+        if (!(cal.getTimeInMillis() > Calendar.getInstance().getTimeInMillis())) {
+            cal.add(Calendar.DATE, 1);
+        }
         if (stringSongArrayList.isEmpty() || songArrayList.isEmpty()) {
             Toast.makeText(this, "Please select a playlist", Toast.LENGTH_LONG).show();
             return false;
@@ -312,18 +318,30 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         Intent intent = new Intent(this, MyBroadcast.class);
         intent.putExtra("songList", stringSongArrayList);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
-                12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                (int)cal.getTimeInMillis(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am =
                 (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
-//        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-//                pendingIntent);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        Log.d("alarm", "Alarm is set for " + cal.getTime());
-        Log.d("alarm", "Time is set to " + curTime.getTime());
-        Toast.makeText(this, "Alarm is set for" + cal.getTime(), Toast.LENGTH_SHORT).show();
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                pendingIntent);
+//        am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        mydb.insertAlarm((int)cal.getTimeInMillis(), 1, "day", timeFormat.format(cal.getTime()), "");
+
+
+        Toast.makeText(this, "Alarm is set for " + cal.getTime().toString(), Toast.LENGTH_SHORT).show();
+        setupTimeList();
         return true;
     }
 
+    public boolean onCancelAlarm() {
+        Intent intent = new Intent(this, MyBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),
+                12345, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        pendingIntent.cancel();
+        AlarmManager am =
+                (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
+        am.cancel(pendingIntent);
+        return true;
+    }
     class getPlaylistSongs extends AsyncTask<Integer, Void, Integer> {
         @Override
         protected void onPreExecute() {
@@ -417,8 +435,55 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
             intent.putExtras(b);
             progDailog.dismiss();
             startActivityForResult(intent, 1);
+            showDialog(0);
         }
 
 
     }
+
+    @Override
+    public void onLoggedIn() {
+        Log.d("MainActivity", "User logged in");
+    }
+
+    @Override
+    public void onLoggedOut() {
+        Log.d("MainActivity", "User logged out");
+    }
+
+    @Override
+    public void onLoginFailed(Throwable error) {
+        Log.d("MainActivity", "Login failed");
+    }
+
+    @Override
+    public void onTemporaryError() {
+        Log.d("MainActivity", "Temporary error occurred");
+    }
+
+    @Override
+    public void onConnectionMessage(String message) {
+        Log.d("MainActivity", "Received connection message: " + message);
+    }
+
+    @Override
+    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
+        Log.d("MainActivity", "Playback event received: " + eventType.name());
+        switch (eventType) {
+            // Handle event type as necessary
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onPlaybackError(ErrorType errorType, String errorDetails) {
+        Log.d("MainActivity", "Playback error received: " + errorType.name());
+        switch (errorType) {
+            // Handle error type as necessary
+            default:
+                break;
+        }
+    }
+
 }

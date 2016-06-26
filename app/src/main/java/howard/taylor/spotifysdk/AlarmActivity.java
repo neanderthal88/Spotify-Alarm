@@ -54,11 +54,11 @@ public class AlarmActivity extends AppCompatActivity implements ConnectionStateC
         Button stopAlarm = (Button) findViewById(R.id.stopAlarm);
         stopAlarm.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View arg0, MotionEvent arg1) {
-                mPlayer.pause();
                 finish();
                 return false;
             }
         });
+
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
@@ -66,6 +66,7 @@ public class AlarmActivity extends AppCompatActivity implements ConnectionStateC
         builder.setScopes(new String[]{"playlist-read-private", "user-read-private", "streaming", "user-read-email"});
         AuthenticationRequest request = builder.build();
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+
         //playSound(this, getAlarmUri());
     }
 

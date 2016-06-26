@@ -5,4 +5,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/add_playlist" android:title="Add Playlist"
         app:showAsAction="never" />
+    <item android:id="@+id/logout" android:title="Log Out"
+        app:showAsAction="never" />
 </menu>
